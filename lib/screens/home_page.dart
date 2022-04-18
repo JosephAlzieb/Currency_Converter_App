@@ -25,6 +25,30 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextFormField(
+              decoration: InputDecoration(
+                icon: Icon(Icons.money),
+                labelText: "Amount",
+                hintText: "enter the amount you want to convert here",
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(width: 3),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(width: 3,color: Colors.blue),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              keyboardType: TextInputType.number,
+            )
+          ],
+        ),
+      ),
     );
   }
 }
