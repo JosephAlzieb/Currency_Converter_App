@@ -15,6 +15,8 @@ class _HomePageState extends State<HomePage> {
   late List<String> currencies;
   String? _from ;
   String? _to ;
+  String? result;
+  late double rate;
 
 
   @override
@@ -54,6 +56,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextFormField(
+              style: TextStyle(fontSize: 25),
               decoration: const InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
@@ -67,6 +70,12 @@ class _HomePageState extends State<HomePage> {
                 hintStyle: TextStyle(fontSize: 25),
               ),
               keyboardType: TextInputType.number,
+              onFieldSubmitted: (value) async{
+                 rate = await _apiClient.getRate(_from!, _to!);
+                setState(() {
+                  result = (rate * double.parse(value)).toStringAsFixed(3);
+                });
+              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -109,12 +118,23 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 50,
+              padding: const EdgeInsets.symmetric(vertical: 8),
               color: Colors.white,
-              child: const Text(
-                "Result",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Result",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 25),
+                  Text(
+                    result == null ?"":result.toString(),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             )
           ],
