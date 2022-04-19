@@ -15,7 +15,7 @@ class ApiClient {
     if(response.statusCode==200){
       var body = jsonDecode(response.body);
       var list = body["results"];
-      List<String> currenciesList = (list.kyes).toList();
+      List<String> currenciesList = (list.keys).toList();
       return currenciesList;
     }
     else {
