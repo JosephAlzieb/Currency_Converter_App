@@ -10,6 +10,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> currencies = ["USD", "EUR"];
+  String? _from ;
+  String? _to ;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +27,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 25,
+            fontSize: 30,
           ),
         ),
       ),
@@ -41,27 +45,51 @@ class _HomePageState extends State<HomePage> {
                 //   color: Colors.white,
                 // ),
                 labelText: "Amount",
+                labelStyle: TextStyle(fontSize: 25),
                 hintText: "enter the amount you want to convert here",
+                hintStyle: TextStyle(fontSize: 25),
               ),
               keyboardType: TextInputType.number,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                DropDownCurrencies(),
+                DropDownCurrencies(
+                  currencies: currencies,
+                  value: _from,
+                  hintText: "From",
+                  onChanged: (from) {
+                    setState(() {
+                      _from = from;
+                    });
+                  },
+                ),
                 FloatingActionButton(
                   backgroundColor: Colors.white,
                   onPressed: () {},
                   child: Icon(Icons.swap_horiz_outlined, color: Colors.black,),
                 ),
-                DropDownCurrencies(),
+                DropDownCurrencies(
+                  currencies: currencies,
+                  value: _to,
+                  hintText: "To",
+                  onChanged: (to) {
+                    setState(() {
+                      _to = to;
+                    });
+                  },
+                ),
               ],
             ),
             Container(
               width: MediaQuery.of(context).size.width,
               height: 50,
               color: Colors.white,
-              child: Text("Result", textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              child: const Text(
+                "Result",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
             )
           ],
         ),
