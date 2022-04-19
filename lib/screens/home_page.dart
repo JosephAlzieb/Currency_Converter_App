@@ -1,3 +1,4 @@
+import 'package:currency_converter_app/services/api_client.dart';
 import 'package:currency_converter_app/widgets/drop_down_currencies.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +11,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> currencies = ["USD", "EUR"];
+  final ApiClient _apiClient = ApiClient();
+  late List<String> currencies;
   String? _from ;
   String? _to ;
+
+
+  @override
+  void initState() {
+    (() async {
+      List<String> list = await getCurrencies();
+      setState(() {
+        currencies = list;
+      });
+    })();
+  }
+
+  Future<List<String>> getCurrencies() async{
+    return _apiClient.getCurrencies();
+  }
 
   @override
   Widget build(BuildContext context) {
