@@ -33,6 +33,11 @@ class _HomePageState extends State<HomePage> {
     return _apiClient.getCurrencies();
   }
 
+  TextStyle textStyle(int fontSize){
+    return const TextStyle(fontSize: 25);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextFormField(
-              style: TextStyle(fontSize: 25),
+              style: textStyle(25),
               decoration: const InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
