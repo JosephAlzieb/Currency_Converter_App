@@ -66,8 +66,17 @@ class _HomePageState extends State<HomePage> {
                 ),
                 FloatingActionButton(
                   backgroundColor: Colors.white,
-                  onPressed: () {},
-                  child: Icon(Icons.swap_horiz_outlined, color: Colors.black,),
+                  onPressed: () {
+                    String? tmp = _from;
+                    setState(() {
+                      _from=_to;
+                      _to=tmp;
+                    });
+                  },
+                  child: const Icon(
+                    Icons.swap_horiz_outlined,
+                    color: Colors.black,
+                  ),
                 ),
                 DropDownCurrencies(
                   currencies: currencies,
