@@ -1,16 +1,8 @@
 # currency_converter_app
 
-A new Flutter project.
+___
+___
 
-## Getting Started
+#### Here in this video you could see what the application can do (:
+https://user-images.githubusercontent.com/63665876/164123911-9283f3dc-98b7-4fc7-aee7-9fb30e60b62b.mp4
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
